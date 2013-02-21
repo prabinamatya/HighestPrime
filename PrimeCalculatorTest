@@ -1,0 +1,53 @@
+package test.java;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import main.java.PrimeCalculator;
+
+public class PrimeCalculatorTest {
+  private PrimeCalculator testObject;
+	
+	@Before
+	public void setUp() {
+		testObject = new PrimeCalculator();
+	}
+	
+	@Test
+	public void testPrimeNumber() throws Exception {
+		boolean actualVal = testObject.checkPrime(5);
+
+		assertNotNull(actualVal);
+		assertTrue(actualVal);
+	}
+	
+	@Test
+	public void testFindPrimeMultiples() throws Exception {
+		List<Long> actualPrimeNumbers = testObject.findPrimeMultiples(35);
+		
+		assertNotNull(actualPrimeNumbers);
+		assertEquals(2, actualPrimeNumbers.size());
+	}
+	
+	@Test
+	public void testFindTheHighestMultiple() throws Exception {
+		List<Long> arrayLong = new ArrayList(Arrays.asList(5,7));
+		long highest = testObject.findHighestPrimeFromTheReturnedList(arrayLong);
+		assertEquals(7, highest);
+	}
+	
+	@Test
+	public void testHighestPrime() throws Exception {
+		Long actualHigh = testObject.findHighestPrime(600851475143L);
+		assertNotNull(actualHigh);
+		System.out.println("Highest Prime is: " + actualHigh);
+//		assertEquals(29L, actualHigh);
+	}
+
+}
