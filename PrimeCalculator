@@ -1,0 +1,44 @@
+package main.java;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+
+public class PrimeCalculator {
+  
+	public List<Long> findPrimeMultiples(long i) {
+		List<Long> intList = new ArrayList<Long>();
+		for(long j = 2L; j < i; j++){
+			if(i % j == 0){
+				if(checkPrime(j)) {
+					intList.add(j);
+				}
+			}
+		}
+		return intList;
+	}	
+
+	public boolean checkPrime(long j2) {
+		for(long j = 2L; j < j2; j++){
+			if(j2 % j == 0){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public long findHighestPrimeFromTheReturnedList(List<Long> findPrimeMultiples) {
+		Collections.sort(findPrimeMultiples);
+		for(long l : findPrimeMultiples) {
+			System.out.println(l);
+		}
+		return findPrimeMultiples.get(findPrimeMultiples.size()-1);
+	}
+	
+	public Long findHighestPrime(Long enteredNumber) {
+		List<Long> findPrimeMultiples = findPrimeMultiples(enteredNumber);
+		Long returnVal = findHighestPrimeFromTheReturnedList(findPrimeMultiples);
+		return returnVal;
+	}
+}
